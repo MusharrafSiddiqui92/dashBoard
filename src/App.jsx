@@ -8,6 +8,7 @@ import Navbar from './components/navbar/Navbar';
 import Cards from './components/cards/Cards';
 import Graphs from './components/graph/Graphs';
 import Products from './components/products/Products';
+import Customers from './components/customers/Customers';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -24,8 +25,8 @@ function App() {
         <Graphs />
       </>
     } />
-    <Route path="/Products" element={<Products />} />
-    <Route path="/Sidebar" element={<Sidebar />}/>
+    <Route path="/products" element={<Products />}/>
+    <Route path="/customers" element={<Customers />}/>
     {/* <Route path="*" element={<NotFound />} /> */}
   </Routes>
 </BrowserRouter>
