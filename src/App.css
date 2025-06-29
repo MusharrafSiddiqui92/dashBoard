@@ -1,0 +1,21 @@
+/* Default: Small screens */
+.custom-offcanvas-width {
+  width: 25% !important;
+  max-width: 25% !important;
+}
+
+/* Medium screens (≥768px) */
+@media (min-width: 768px) {
+  .custom-offcanvas-width {
+    width: 20% !important;
+    max-width: 20% !important;
+  }
+}
+
+/* Large screens (≥992px) */
+@media (min-width: 992px) {
+  .custom-offcanvas-width {
+    width: 15% !important;
+    max-width: 15% !important;
+  }
+}

@@ -13,12 +13,12 @@ import { WiDayThunderstorm } from "react-icons/wi";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  function handleClickProducts() {
-    navigate("/Sidebar/Products");
-  }
-  function handleClickCustomers() {
-    navigate1("/Sidebar/Customers");
-  }
+  // function handleClickProducts() {
+  //   navigate("/Sidebar/Products");
+  // }
+  // function handleClickCustomers() {
+  //   navigate("/Sidebar/Customers");
+  // }
   return (
     <>
       <button
@@ -30,11 +30,11 @@ const Sidebar = () => {
         Open Sidebar
       </button>
       <div
-        className="offcanvas offcanvas-start show"
+        className="offcanvas offcanvas-start show custom-offcanvas-width"
         tabIndex="-1"
         id="offcanvas"
         aria-labelledby="offcanvasLabel"
-        style={{ width: "15%" }}
+      // style={{width:"30%"}}
       >
         <div className="offcanvas-header">
           <h5 className="offcanvas-title" id="offcanvasLabel">
@@ -51,12 +51,14 @@ const Sidebar = () => {
         <div className="offcanvas-body fs-5">
           <ul className="nav flex-column">
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <NavLink to="/" className="nav-link">
                 <MdDashboard />
                 <span className="ps-3">Dashboard</span>
-              </a>
+              </NavLink>
+              {/* <a className="nav-link" href="#">
+              </a> */}
             </li>
-            <li className="nav-item mt-3" onClick={handleClickProducts}>
+            <li className="nav-item mt-3">
               {/* <a class="nav-link" href="#"> */}
               <NavLink to="/Products" className="nav-link">
                 <MdOutlineProductionQuantityLimits />
@@ -69,7 +71,7 @@ const Sidebar = () => {
                 <span className="ps-3">Category</span>{" "}
               </a>
             </li>
-            <li className="nav-item mt-3" onClick={handleClickCustomers}>
+            <li className="nav-item mt-3">
               <NavLink to="/Customers" className="nav-link">
                 {/* <a className="nav-link" href="#"><HiUsers /> */}
                 <HiUsers />
@@ -96,6 +98,7 @@ const Sidebar = () => {
             </li>
           </ul>
         </div>
+        <outLet/>
       </div>
     </>
   );

@@ -52,7 +52,7 @@ const Products = () => {
           name="description"
           value={formData.description}
           onChange={handleChange}
-          placeholder="Product 
+          placeholder="Product Price & 
            Description"
           className="form-control mb-2"
         />

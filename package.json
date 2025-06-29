@@ -1,10 +1,9 @@
 {
-  "name": "dashBoard",
+  "name":"dashboard",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://MusharrafSiddiqui92.github.io/dashBoard",
-
   "scripts": {
     "dev": "vite",
     "build": "vite build",

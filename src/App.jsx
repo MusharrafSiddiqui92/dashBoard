@@ -9,28 +9,26 @@ import Cards from './components/cards/Cards';
 import Graphs from './components/graph/Graphs';
 import Products from './components/products/Products';
 import Customers from './components/customers/Customers';
+import NotFound from './components/notFound/NotFound';
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <BrowserRouter>
-      <Sidebar/>
-
+        <BrowserRouter basename="/dashBoard">
+          <Sidebar />
 <Routes>
-    <Route path="/" element={
-      <>
-      <Navbar/>
-        <Cards />
-        <Graphs />
-      </>
-    } />
-    <Route path="/products" element={<Products />}/>
-    <Route path="/customers" element={<Customers />}/>
-    {/* <Route path="*" element={<NotFound />} /> */}
-  </Routes>
-</BrowserRouter>
-</>
+            <Route path="/" element={
+              <>
+                <Navbar />
+                <Cards />
+                <Graphs />
+              </>
+            } />
+            <Route path="/products" element={<Products />} />
+            <Route path="/customers" element={<Customers />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+    </>
   )
 }
 
