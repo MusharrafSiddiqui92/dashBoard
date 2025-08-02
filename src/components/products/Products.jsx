@@ -1,22 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Outlet, useNavigate } from "react-router-dom";
-
 const Products = () => {
+  const [dynamicCard, setDynamicCard] = useState([]);
   const [formData, SetFormData] = useState({
     cardImage: "",
     title: "",
     description: "",
   });
-  const [dynamicCard, SetDynamicCard] = useState([]);
+
+  useEffect(() => {
+    try {
+      const savedCards = localStorage.getItem("dynamicCard");
+      console.log("Loaded from localStorage:", savedCards);
+      if (savedCards && savedCards !== "undefined") {
+        setDynamicCard(JSON.parse(savedCards));
+      }
+    } catch (error) {
+      console.error("Error parsing saved cards:", error);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("Saving to localStorage:", dynamicCard);
+    localStorage.setItem('dynamicCard', JSON.stringify(dynamicCard))
+  }, [dynamicCard])
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === "cardImage") {
-      const file = files[0];
-      if (file) {
-        const imageUrl = URL.createObjectURL(file);
-        SetFormData((prev) => ({ ...prev, cardImage: imageUrl }));
-      }
+    if (name === "cardImage" && files?.[0]) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        SetFormData((prev) => ({ ...prev, cardImage: reader.result }));
+      };
+      reader.readAsDataURL(files[0]); // Base64 encoding for persistence
     } else {
       SetFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -24,14 +40,15 @@ const Products = () => {
   const handleAddCard = () => {
     // Only add if title and description are filled
     if (formData.title && formData.description) {
-      SetDynamicCard([...dynamicCard, formData]);
+      setDynamicCard([...dynamicCard, formData]);
       SetFormData({ cardImage: "", title: "", description: "" }); // clear form
     }
+
   };
   return (
     <>
       <div className="container w-50">
-        <h3 class="display-6">Add Your Products Below</h3>
+        <h3 className="display-6">Add Your Products Below</h3>
         <input
           type="file"
           name="cardImage"
